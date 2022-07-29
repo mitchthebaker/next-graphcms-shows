@@ -1,10 +1,11 @@
 import ReactMarkdown from 'react-markdown'
 import styled from 'styled-components'
 import Layout from '@c/Layout'
+import { Link } from "@c/Link"
 import FlexyRow from '@c/FlexyRow'
 import { Title } from '@c/Title'
 import { getShowBySlug } from '@l/graphcms'
-import { formatUSD, formatDate, containsProtocol, prependHttp } from '@l/utils'
+import { formatUSD, formatDate } from '@l/utils'
 
 const Markdown = styled(ReactMarkdown)`
   img {
@@ -58,10 +59,10 @@ export default function Shows({ show }) {
           <Portrait images={artist.images} />
 
           <FlexyRow justify="flex-start">
-            <a href={(containsProtocol(artist.webUrl)) ? artist.webUrl : prependHttp(artist.webUrl)} target="_blank">Website</a>
-            <a href={artist.facebookUrl} target="_blank">Facebook</a>
-            <a href={artist.instagramUrl} target="_blank">Instagram</a>
-            <a href={artist.youTubeUrl} target="_blank">YouTube</a>
+            <Link url={artist.webUrl} title={"Website"} />
+            <Link url={artist.facebookUrl} title={"Facebook"} />
+            <Link url={artist.instagramUrl} title={"Instagram"} />
+            <Link url={artist.youTubeUrl} title={"YouTube"} />
           </FlexyRow>
 
           <Markdown source={artist.bio} />

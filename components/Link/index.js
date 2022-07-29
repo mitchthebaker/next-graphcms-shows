@@ -1,6 +1,9 @@
-import { containsProtocol, prependHttp } from '@l/utils'
+import { containsProtocol, prependHttps } from '@l/utils'
 
-export const Link = ({url, title}) => {
-  return <a href={(containsProtocol(url)) ? url : prependHttp(url)} target="_blank"> {title} </a>
-};
+export const Link = ({url, title}) => 
+  url && (
+    <a href={(containsProtocol(url)) ? url : prependHttps(url)} target="_blank"> 
+      {title} 
+    </a>
+  )
 
