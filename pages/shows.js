@@ -1,34 +1,40 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, createContext } from "react";
 import Layout from '@c/Layout'
 import { Grid, Card } from '@c/Grid'
 import { Title } from '@c/Title'
+import { Sort } from '@c/Sort'
 import { getAllShows } from '@l/graphcms'
 import { sortByProperty } from '@l/utils'
+
+export const ShowsContext = createContext([{}, () => {}])
 
 export default function Shows({ data }) {
   const [shows, setShows] = useState([]);
 
   useEffect(() => setShows(data), [])
 
-  const sortShows = (property) => {
-    /**
-     * Arrays in JS are referenced types, so even though sorting takes place it doesn't 
-     * change the reference to the original array. 
-     * 
-     * Solution here is to use spread operator inside new Array.
-     */
-    setShows([...shows.sort(sortByProperty(property))])
-  }
-
   return (
     <Layout title="next-graphcms-shows / Shows">
       <Title>Shows</Title>
 
-      <button onClick={() => sortShows("title")}> Sort by title ascending </button>
-      <button onClick={() => sortShows("-title")}> Sort by title descending </button>
-
-      <button onClick={() => sortShows("scheduledStartTime")}> Sort by scheduledStartTime ascending </button>
-      <button onClick={() => sortShows("-scheduledStartTime")}> Sort by scheduledStartTime descending </button>
+      <ShowsContext.Provider value={[shows, setShows]}>
+        <Sort 
+          title={"Title"} 
+          options={[
+            {
+              id: 0,
+              type: "Ascending",
+              property: "title"
+            },
+            {
+              id: 1,
+              type: "Descending",
+              property: "-title"
+            }
+          ]} 
+        />
+        <Sort title={"Scheduled Start Time"} />
+      </ShowsContext.Provider>
 
       <Grid>
         {shows.map(show => (
