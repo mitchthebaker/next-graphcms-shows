@@ -18,26 +18,45 @@ export default function Shows({ data }) {
     <Layout title="next-graphcms-shows / Shows">
       <Title>Shows</Title>
 
+      {
+        /**
+         * To avoid prop drilling, pass [shows, setShows] into our Sort components with a context provider
+         */
+      }
       <ShowsContext.Provider value={[shows, setShows]}>
         <Sort 
           title={"Title"} 
           options={[
             {
               id: 0,
-              type: "Ascending",
               property: "title",
+              type: "Ascending",
               icon: <FaSortAmountUp />
             },
             {
               id: 1,
-              type: "Descending",
               property: "-title",
+              type: "Descending",
               icon: <FaSortAmountDown />
             }
           ]} 
         />
         <Sort 
           title={"Scheduled Start Time"} 
+          options={[
+            {
+              id: 0,
+              property: "scheduledStartTime",
+              type: "Ascending",
+              icon: <FaSortAmountUp />
+            },
+            {
+              id: 1,
+              property: "-scheduledStartTime",
+              type: "Descending",
+              icon: <FaSortAmountDown />
+            }
+          ]} 
         />
       </ShowsContext.Provider>
 

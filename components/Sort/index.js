@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import styled, { css } from 'styled-components'
 import { FaAngleDown, FaSortAmountDown, FaSortAmountUp } from 'react-icons/fa'
 //import { applySort } from '@l/utils'
@@ -43,6 +43,11 @@ function Button({ type, icon, property }) {
   )
 }
 
+/**
+ * @param {string} title The title of the property we'd like to sort shows on 
+ * @param {array} options An array of objects which contains meta data for sorting (by title/scheduledStartTime, ascending/descending, icon, etc.)
+ * @returns {ReactFragment}
+*/
 export function Sort({ title, options }) {
   const [toggle, setToggle] = useState(false)
 
