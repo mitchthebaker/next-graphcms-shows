@@ -1,4 +1,5 @@
 import { useEffect, useState, createContext } from "react";
+import { FaSortAmountDown, FaSortAmountUp } from 'react-icons/fa'
 import Layout from '@c/Layout'
 import { Grid, Card } from '@c/Grid'
 import { Title } from '@c/Title'
@@ -24,16 +25,20 @@ export default function Shows({ data }) {
             {
               id: 0,
               type: "Ascending",
-              property: "title"
+              property: "title",
+              icon: <FaSortAmountUp />
             },
             {
               id: 1,
               type: "Descending",
-              property: "-title"
+              property: "-title",
+              icon: <FaSortAmountDown />
             }
           ]} 
         />
-        <Sort title={"Scheduled Start Time"} />
+        <Sort 
+          title={"Scheduled Start Time"} 
+        />
       </ShowsContext.Provider>
 
       <Grid>

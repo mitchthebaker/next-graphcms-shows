@@ -55,21 +55,15 @@ export function Sort({ title, options }) {
 
       {toggle && (
         <StyledUl>
-          <li> 
-            <Button 
-              type={"Ascending"} 
-              icon={<FaSortAmountUp />} 
-              property={"title"}
-            />
-          </li>
-          <li> 
-            <Button 
-              type={"Descending"} 
-              icon={<FaSortAmountDown />} 
-              property={"-title"}
-            /> 
-          </li> 
-          
+          {options.map(option => (
+            <li key={option.id}>
+              <Button 
+                property={option.property}
+                type={option.type}
+                icon={option.icon}
+              />
+            </li>
+          ))}
         </StyledUl>
       )}
     </>
