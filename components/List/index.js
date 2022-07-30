@@ -7,12 +7,12 @@ function Content({ href, show }) {
     <Link href={href}>
       <a css={ListContent}>
         <ContentHeader>
-          <h2> { show.title } </h2>
+          <h2> {show.title} </h2>
           <h4> {show.artists.map(({ fullName }) => fullName).join(', ')} </h4>
         </ContentHeader>
         <ContentDescription>
-          <span> { formatDate(show.scheduledStartTime) } </span>
-          <span> $ { show.ticketPrice } </span>
+          <span> {formatDate(show.scheduledStartTime)} </span>
+          <span> $ {show.ticketPrice} </span>
         </ContentDescription>
       </a>
     </Link>

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { FaAngleDown, FaSortAmountDown, FaSortAmountUp } from 'react-icons/fa'
+import { FaAngleDown } from 'react-icons/fa'
 import { ShowsContext } from '../../pages/shows'
 import { sortByProperty } from '@l/utils'
 import { Wrapper, StyledButton, StyledUl, StyledOption } from './Sort.css'
@@ -40,8 +40,8 @@ function SortOption({ type, icon, property }) {
 
   return (
     <StyledOption onClick={() => applySort(property)}> 
-      <span> { icon } </span>
-      <span> { type } </span>
+      <span> {icon} </span>
+      <span> {type} </span>
     </StyledOption>
   )
 }
@@ -57,7 +57,7 @@ export function Sort({ title, options }) {
   return (
     <Wrapper>
       <StyledButton onClick={() => setToggle(!toggle)}> 
-        <span> { title } </span>
+        <span> {title} </span>
         <FaAngleDown />
       </StyledButton>
 

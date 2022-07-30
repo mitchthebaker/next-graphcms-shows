@@ -28,10 +28,12 @@ export default function Shows({ data }) {
   return (
     <Layout title="next-graphcms-shows / Shows">
       <Title>Shows</Title>
+
       <ToggleView 
         grid={grid}
         setGrid={setGrid}
       />
+      
       {
         /**
          * To avoid prop drilling, pass [shows, setShows] into our Sort components with a context provider

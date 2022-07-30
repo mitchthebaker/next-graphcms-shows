@@ -28,15 +28,15 @@ Sorting is a tricky one, and the solution for this issue depends. For the data s
 
 Sorting with GraphQL is not realistic here because these queries are executed at build time, therefore you cannot change GraphQL queries in the client. 
 
-- Issue #3: Add ability to sort shows 
+- Issue #3: Add ability to sort shows ✅
 
 
-- Issue #1: Create show list (not grid) view 
-- Issue #2: Page /404 for `shows`
+- Issue #1: Create show list (not grid) view ✅
+- Issue #2: Page /404 for `shows` ✅
 
 Priority 2: 
 
 - Issue #8: Shows uniform display on mobile 
 - Issue #9: Shows page is stupid-wide, not centered 
 - Issue #6: Add `spotifyUrl` to list of Artist links 
-- Issue #7: Add Artist Route 
+- Issue #7: Add Artist Route ✅
