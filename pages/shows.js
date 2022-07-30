@@ -1,11 +1,19 @@
-import { useEffect, useState, createContext } from "react";
+import { useEffect, useState, createContext } from 'react';
+import styled, { css } from 'styled-components'
 import { FaSortAmountDown, FaSortAmountUp } from 'react-icons/fa'
 import Layout from '@c/Layout'
 import { Grid, Card } from '@c/Grid'
 import { Title } from '@c/Title'
 import { Sort } from '@c/Sort'
 import { getAllShows } from '@l/graphcms'
-import { sortByProperty } from '@l/utils'
+
+const StyledWrapper = css`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0rem 4rem 0rem;
+`
 
 export const ShowsContext = createContext([{}, () => {}])
 
@@ -21,43 +29,47 @@ export default function Shows({ data }) {
       {
         /**
          * To avoid prop drilling, pass [shows, setShows] into our Sort components with a context provider
+         * 
+         * Issue #3: reasoning for sorting in client-side explained in <Sort /> component 
          */
       }
       <ShowsContext.Provider value={[shows, setShows]}>
-        <Sort 
-          title={"Title"} 
-          options={[
-            {
-              id: 0,
-              property: "title",
-              type: "Ascending",
-              icon: <FaSortAmountUp />
-            },
-            {
-              id: 1,
-              property: "-title",
-              type: "Descending",
-              icon: <FaSortAmountDown />
-            }
-          ]} 
-        />
-        <Sort 
-          title={"Scheduled Start Time"} 
-          options={[
-            {
-              id: 0,
-              property: "scheduledStartTime",
-              type: "Ascending",
-              icon: <FaSortAmountUp />
-            },
-            {
-              id: 1,
-              property: "-scheduledStartTime",
-              type: "Descending",
-              icon: <FaSortAmountDown />
-            }
-          ]} 
-        />
+        <div css={StyledWrapper}>
+          <Sort 
+            title={"Title"} 
+            options={[
+              {
+                id: 0,
+                property: "title",
+                type: "Ascending",
+                icon: <FaSortAmountUp />
+              },
+              {
+                id: 1,
+                property: "-title",
+                type: "Descending",
+                icon: <FaSortAmountDown />
+              }
+            ]} 
+          />
+          <Sort 
+            title={"Scheduled Start Time"} 
+            options={[
+              {
+                id: 0,
+                property: "scheduledStartTime",
+                type: "Ascending",
+                icon: <FaSortAmountUp />
+              },
+              {
+                id: 1,
+                property: "-scheduledStartTime",
+                type: "Descending",
+                icon: <FaSortAmountDown />
+              }
+            ]} 
+          />
+        </div>
       </ShowsContext.Provider>
 
       <Grid>
