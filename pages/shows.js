@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components'
 import { FaSortAmountDown, FaSortAmountUp } from 'react-icons/fa'
 import Layout from '@c/Layout'
 import { Grid, Card } from '@c/Grid'
+import { List } from '@c/List'
 import { Title } from '@c/Title'
 import { Sort } from '@c/Sort'
 import { getAllShows } from '@l/graphcms'
@@ -18,6 +19,7 @@ const StyledWrapper = css`
 export const ShowsContext = createContext([{}, () => {}])
 
 export default function Shows({ data }) {
+  console.log(data);
   const [shows, setShows] = useState([]);
 
   useEffect(() => setShows(data), [])
@@ -79,6 +81,7 @@ export default function Shows({ data }) {
           </Card>
         ))}
       </Grid>
+      <List shows={shows} />
     </Layout>
   )
 }

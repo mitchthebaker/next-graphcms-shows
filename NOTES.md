@@ -24,7 +24,7 @@ For conditionally showing artist URLs.. well, if the field is not null, then loa
 - Issue #5: Conditionally show artist URLs ✅
 
 
-Sorting is a tricky one, and the solution for this issue depends. For the data set I am currently given, it is much faster to sort the data on the client side. However, if we were dealing with 1000's of rows to sort, then sorting would be more efficient on the client side. 
+Sorting is a tricky one, and the solution for this issue depends. For the data set I am currently given, it is much faster to sort the data on the client side. However, if we were dealing with 1000's of rows to sort, then sorting would be more efficient on the server side. 
 
 Sorting with GraphQL is not realistic here because these queries are executed at build time, therefore you cannot change GraphQL queries in the client. 
 
