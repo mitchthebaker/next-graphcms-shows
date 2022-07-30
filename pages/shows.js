@@ -1,10 +1,12 @@
-import { useEffect, useState, createContext } from 'react';
+import { useEffect, useState, createContext } from 'react'
 import styled, { css } from 'styled-components'
 import { FaSortAmountDown, FaSortAmountUp } from 'react-icons/fa'
 import Layout from '@c/Layout'
 import { Grid, Card } from '@c/Grid'
+import { List } from '@c/List'
 import { Title } from '@c/Title'
 import { Sort } from '@c/Sort'
+import { ToggleView } from '@c/ToggleView'
 import { getAllShows } from '@l/graphcms'
 
 const StyledWrapper = css`
@@ -19,13 +21,17 @@ export const ShowsContext = createContext([{}, () => {}])
 
 export default function Shows({ data }) {
   const [shows, setShows] = useState([]);
+  const [grid, setGrid] = useState(true)
 
   useEffect(() => setShows(data), [])
 
   return (
     <Layout title="next-graphcms-shows / Shows">
       <Title>Shows</Title>
-
+      <ToggleView 
+        grid={grid}
+        setGrid={setGrid}
+      />
       {
         /**
          * To avoid prop drilling, pass [shows, setShows] into our Sort components with a context provider
@@ -71,14 +77,18 @@ export default function Shows({ data }) {
           />
         </div>
       </ShowsContext.Provider>
-
-      <Grid>
-        {shows.map(show => (
-          <Card href={`/show/${show.slug}`} header={show.title} key={show.id}>
-            <p>{show.artists.map(({ fullName }) => fullName).join(', ')}</p>
-          </Card>
-        ))}
-      </Grid>
+      
+      {grid ? (
+        <Grid>
+          {shows.map(show => (
+            <Card href={`/show/${show.slug}`} header={show.title} key={show.id}>
+              <p>{show.artists.map(({ fullName }) => fullName).join(', ')}</p>
+            </Card>
+          ))}
+        </Grid>
+      ) : (
+        <List shows={shows} />
+      )}
     </Layout>
   )
 }
