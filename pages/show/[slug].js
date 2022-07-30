@@ -1,7 +1,7 @@
 import ReactMarkdown from 'react-markdown'
 import styled from 'styled-components'
 import Layout from '@c/Layout'
-import { Link } from "@c/Link"
+import { Link } from '@c/Link'
 import FlexyRow from '@c/FlexyRow'
 import { Title } from '@c/Title'
 import { getShowBySlug } from '@l/graphcms'
