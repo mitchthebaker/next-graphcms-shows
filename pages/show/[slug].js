@@ -1,6 +1,6 @@
 import Layout from '@c/Layout'
-import { Link } from '@c/Link'
 import FlexyRow from '@c/FlexyRow'
+import Link from 'next/link'
 import { Title } from '@c/Title'
 import { getShowBySlug } from '@l/graphcms'
 import { formatUSD, formatDate } from '@l/utils'
@@ -18,22 +18,18 @@ export default function Shows({ show }) {
 
       <Markdown source={show.description} />
 
-      {show.artists.map(artist => (
-        <div key={artist.id}>
-          <ArtistName>{artist.fullName}</ArtistName>
-
-          <Portrait images={artist.images} />
-
-          <FlexyRow justify="flex-start">
-            <Link url={artist.webUrl} title={"Website"} />
-            <Link url={artist.facebookUrl} title={"Facebook"} />
-            <Link url={artist.instagramUrl} title={"Instagram"} />
-            <Link url={artist.youTubeUrl} title={"YouTube"} />
-          </FlexyRow>
-
-          <Markdown source={artist.bio} />
-        </div>
-      ))}
+      {show.artists.map((artist) => {
+        if(artist.slug) {
+          return (
+            <Link href={`/artist/${artist.slug}`} passHref key={artist.id}>
+              <a>
+                <ArtistName> {artist.fullName} </ArtistName>
+                <Portrait images={artist.images} />
+              </a>
+            </Link>
+          )
+        }
+      })}
     </Layout>
   )
 }
