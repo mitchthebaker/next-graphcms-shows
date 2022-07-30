@@ -76,7 +76,15 @@ export async function getServerSideProps({ params }) {
   const { slug } = params
   const show = (await getShowBySlug(slug))
 
-  return {
-    props: { show },
+  if(show) {
+    return {
+      props: { show },
+    }
+  }
+  else {
+    // Throw a 404 if page does not exist 
+    return {
+      notFound: true,
+    }
   }
 }
