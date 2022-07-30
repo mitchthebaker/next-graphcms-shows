@@ -23,8 +23,8 @@ export default function Shows({ show }) {
           return (
             <Link href={`/artist/${artist.slug}`} passHref key={artist.id}>
               <a>
-                <ArtistName> {artist.fullName} </ArtistName>
                 <Portrait images={artist.images} />
+                <ArtistName> {artist.fullName} </ArtistName>
               </a>
             </Link>
           )

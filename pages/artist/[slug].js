@@ -3,9 +3,6 @@ import styled from 'styled-components'
 import Layout from '@c/Layout'
 import { Link } from '@c/Link'
 import FlexyRow from '@c/FlexyRow'
-import { Title } from '@c/Title'
-import { getShowBySlug } from '@l/graphcms'
-import { formatUSD, formatDate } from '@l/utils'
 import { getArtistBySlug } from '@l/graphcms'
 
 export const Markdown = styled(ReactMarkdown)`
